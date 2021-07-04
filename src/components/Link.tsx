@@ -1,15 +1,30 @@
-import styled from 'styled-components';
+import React, { ReactElement, TouchEventHandler } from 'react';
 import Router from '../classes/Router';
+import preventDefault from '../utils/preventDefault';
 
-const StyledLink = styled.a.attrs((props) => ({
-    onClick: (event) => {
-        event.preventDefault();
-        Router.push(props.href as string);
-    }
-}))`
-    color: inherit;
-    cursor: pointer;
-    text-decoration: none;
-`;
+interface IProps {
+    'aria-label'?: string;
+    className?: string;
+    href?: string;
+    children: any;
+    onTouchStart?: TouchEventHandler;
+}
 
-export default StyledLink;
+const Link = ({ 'aria-label': ariaLabel, className, href, children, onTouchStart }: IProps): ReactElement => (
+    <a
+        aria-label={ariaLabel}
+        className={className}
+        href={href}
+        onClick={(event) => {
+            if (href) {
+                preventDefault(event);
+                Router.push(href);
+            }
+        }}
+        onTouchStart={onTouchStart}
+    >
+        {children}
+    </a>
+);
+
+export default Link;
