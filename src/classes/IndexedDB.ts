@@ -1,6 +1,6 @@
 import indexedDBConfig from '../indexedDB.config.json';
-import promisifyIDBRequest from '../utils/promisifyIDBRequest';
-import objectStoreTransaction from '../utils/objectStoreTransaction';
+import { promisifyIDBRequest } from '../utils/promisifyIDBRequest';
+import { objectStoreTransaction } from '../utils/objectStoreTransaction';
 import { IWriting } from './Database';
 
 const indexedDB = window.indexedDB;
@@ -89,6 +89,4 @@ class IndexedDBClass {
     }
 }
 
-const IndexedDB = new IndexedDBClass(indexedDBConfig);
-
-export default IndexedDB;
+export const IndexedDB = new IndexedDBClass(indexedDBConfig);

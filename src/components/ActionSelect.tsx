@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import cx from 'clsx';
-import UnfoldMoreIcon from '../icons/UnfoldMoreIcon';
+import { UnfoldMoreIcon } from '../icons/UnfoldMoreIcon';
 
 interface IProps<Type> {
     className?: string;
@@ -10,7 +10,13 @@ interface IProps<Type> {
     label: string;
 }
 
-const ActionSelect = <Type extends any>({ className, options, value, onChange, label }: IProps<Type>): ReactElement => {
+export const ActionSelect = <Type extends any>({
+    className,
+    options,
+    value,
+    onChange,
+    label
+}: IProps<Type>): ReactElement => {
     const selectedIndex = options?.findIndex((option) => option.value === value);
     const selectedValue = options[selectedIndex]?.label || '';
 
@@ -38,5 +44,3 @@ const ActionSelect = <Type extends any>({ className, options, value, onChange, l
         </label>
     );
 };
-
-export default ActionSelect;

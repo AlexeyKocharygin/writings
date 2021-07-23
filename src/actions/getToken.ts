@@ -1,7 +1,7 @@
-import userState from '../store/states/userState';
-import Auth, { IUser } from '../classes/Auth';
+import { userState } from '../store/states/userState';
+import { Auth, IUser } from '../classes/Auth';
 
-const getToken = async (): Promise<IUser['idToken']> => {
+export const getToken = async (): Promise<IUser['idToken']> => {
     const user = userState();
 
     if (!user) {
@@ -24,5 +24,3 @@ const getToken = async (): Promise<IUser['idToken']> => {
 
     return refreshedData.idToken;
 };
-
-export default getToken;

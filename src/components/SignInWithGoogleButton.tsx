@@ -1,14 +1,14 @@
 import React, { MouseEventHandler, ReactElement } from 'react';
 import { useSelector } from 'react-tagged-state';
 import cx from 'clsx';
-import intlState from '../store/states/intlState';
+import { intlState } from '../store/states/intlState';
 
 interface IProps {
     className?: string;
     onClick?: MouseEventHandler;
 }
 
-const SignInWithGoogleButton = ({ className, onClick }: IProps): ReactElement => {
+export const SignInWithGoogleButton = ({ className, onClick }: IProps): ReactElement => {
     const { formatMessage } = useSelector(intlState);
 
     return (
@@ -32,5 +32,3 @@ const SignInWithGoogleButton = ({ className, onClick }: IProps): ReactElement =>
 SignInWithGoogleButton.defaultProps = {
     type: 'button'
 };
-
-export default SignInWithGoogleButton;

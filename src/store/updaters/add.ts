@@ -1,6 +1,6 @@
-import copy from './copy';
+import { copy } from './copy';
 
-const add =
+export const add =
     <Type>(key: string, data: Type) =>
     (object: Record<string, Type>): Record<string, Type> => {
         const objectCopy = copy()(object);
@@ -9,5 +9,3 @@ const add =
 
         return objectCopy;
     };
-
-export default add;

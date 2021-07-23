@@ -1,16 +1,16 @@
 import React, { ReactElement } from 'react';
-import ErrorBoundary from './components/ErrorBoundary';
-import OopsPage from './components/pages/OopsPage';
-import HelloPage from './components/pages/HelloPage';
-import WritingPage from './components/pages/WritingPage';
-import WritingsPage from './components/pages/WritingsPage';
-import useTouchEvents from './hooks/useTouchEvents';
-import Route from './components/Route';
-import PrivateRoute from './components/PrivateRoute';
-import Page from './components/Page';
-import useVisualViewportHeight from './hooks/useVisualViewportHeight';
+import { ErrorBoundary } from './components/ErrorBoundary';
+import { OopsPage } from './components/pages/OopsPage';
+import { HelloPage } from './components/pages/HelloPage';
+import { WritingPage } from './components/pages/WritingPage';
+import { WritingsPage } from './components/pages/WritingsPage';
+import { useTouchEvents } from './hooks/useTouchEvents';
+import { Route } from './components/Route';
+import { PrivateRoute } from './components/PrivateRoute';
+import { Page } from './components/Page';
+import { useVisualViewportHeight } from './hooks/useVisualViewportHeight';
 
-const App = (): ReactElement => {
+export const App = (): ReactElement => {
     useTouchEvents();
     useVisualViewportHeight();
 
@@ -43,5 +43,3 @@ const App = (): ReactElement => {
         </ErrorBoundary>
     );
 };
-
-export default App;

@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-tagged-state';
-import intlState from '../../store/states/intlState';
-import AutorenewIcon from '../../icons/AutorenewIcon';
-import PrimaryButton from '../PrimaryButton';
-import ErrorIcon from '../../icons/ErrorIcon';
+import { intlState } from '../../store/states/intlState';
+import { AutorenewIcon } from '../../icons/AutorenewIcon';
+import { PrimaryButton } from '../PrimaryButton';
+import { ErrorIcon } from '../../icons/ErrorIcon';
 
-const OopsPage = (): ReactElement => {
+export const OopsPage = (): ReactElement => {
     const { formatMessage } = useSelector(intlState);
 
     return (
@@ -23,5 +23,3 @@ const OopsPage = (): ReactElement => {
         </>
     );
 };
-
-export default OopsPage;

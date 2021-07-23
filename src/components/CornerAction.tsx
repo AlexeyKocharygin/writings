@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import cx from 'clsx';
-import useTransition from '../hooks/useTransition';
-import Portal from './Portal';
+import { useTransition } from '../hooks/useTransition';
+import { Portal } from './Portal';
 
 interface IProps {
     className?: string;
@@ -9,7 +9,7 @@ interface IProps {
     children: any;
 }
 
-const CornerAction = ({ opened, className, children }: IProps): ReactElement => {
+export const CornerAction = ({ opened, className, children }: IProps): ReactElement => {
     const transition = useTransition(!!opened, 300);
 
     return (
@@ -26,5 +26,3 @@ const CornerAction = ({ opened, className, children }: IProps): ReactElement => 
         </Portal>
     );
 };
-
-export default CornerAction;

@@ -6,7 +6,7 @@ interface IProps {
     src?: string;
 }
 
-const Avatar = ({ className, src }: IProps): ReactElement => {
+export const Avatar = ({ className, src }: IProps): ReactElement => {
     const [isError, setIsError] = useState(false);
 
     useEffect(() => {
@@ -19,5 +19,3 @@ const Avatar = ({ className, src }: IProps): ReactElement => {
         </div>
     );
 };
-
-export default Avatar;

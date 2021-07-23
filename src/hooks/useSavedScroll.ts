@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import LocalStorage from '../classes/LocalStorage';
+import { LocalStorage } from '../classes/LocalStorage';
 
 const savedScroll = LocalStorage.get('savedScroll') || {};
 
@@ -11,7 +11,7 @@ window.addEventListener(
     { passive: true }
 );
 
-const useSavedScroll = (name: string): void => {
+export const useSavedScroll = (name: string): void => {
     useEffect(() => {
         const handleScroll = () => {
             const value = document.documentElement.scrollTop;
@@ -50,5 +50,3 @@ const useSavedScroll = (name: string): void => {
         };
     }, [name]);
 };
-
-export default useSavedScroll;

@@ -1,12 +1,12 @@
 import React, { MouseEventHandler, ReactElement } from 'react';
 import cx from 'clsx';
 import { useSelector } from 'react-tagged-state';
-import useTransition from '../hooks/useTransition';
-import useOutsideClick from '../hooks/useOutsideClick';
-import intlState from '../store/states/intlState';
-import Portal from './Portal';
-import ActionsGroup from './ActionsGroup';
-import ActionButton from './ActionButton';
+import { useTransition } from '../hooks/useTransition';
+import { useOutsideClick } from '../hooks/useOutsideClick';
+import { intlState } from '../store/states/intlState';
+import { Portal } from './Portal';
+import { ActionsGroup } from './ActionsGroup';
+import { ActionButton } from './ActionButton';
 
 interface IProps {
     opened?: boolean;
@@ -15,7 +15,7 @@ interface IProps {
     onMouseDown?: MouseEventHandler;
 }
 
-const Menu = ({ opened, children, onClose, onMouseDown }: IProps): ReactElement => {
+export const Menu = ({ opened, children, onClose, onMouseDown }: IProps): ReactElement => {
     const transition = useTransition(!!opened, 300);
     const ref = useOutsideClick<HTMLDivElement>(onClose);
     const { formatMessage } = useSelector(intlState);
@@ -42,5 +42,3 @@ const Menu = ({ opened, children, onClose, onMouseDown }: IProps): ReactElement 
         </Portal>
     );
 };
-
-export default Menu;

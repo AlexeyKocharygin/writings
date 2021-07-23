@@ -1,24 +1,24 @@
 import React, { ReactElement } from 'react';
-import useRichStyles from '../hooks/useRichStyles';
-import FormatAlignCenterIcon from '../icons/FormatAlignCenterIcon';
-import FormatAlignLeftIcon from '../icons/FormatAlignLeftIcon';
-import FormatAlignRightIcon from '../icons/FormatAlignRightIcon';
-import FormatBoldIcon from '../icons/FormatBoldIcon';
-import FormatItalicIcon from '../icons/FormatItalicIcon';
-import FormatListBulletedIcon from '../icons/FormatListBulletedIcon';
-import FormatListNumberedIcon from '../icons/FormatListNumberedIcon';
-import FormatSizeIcon from '../icons/FormatSizeIcon';
-import FormatUnderlinedIcon from '../icons/FormatUnderlinedIcon';
-import RichUtils from '../classes/RichUtils';
-import combine from '../utils/combine';
-import ActionIconButton from './ActionIconButton';
-import ActionsGroup from './ActionsGroup';
+import { useRichStyles } from '../hooks/useRichStyles';
+import { FormatAlignCenterIcon } from '../icons/FormatAlignCenterIcon';
+import { FormatAlignLeftIcon } from '../icons/FormatAlignLeftIcon';
+import { FormatAlignRightIcon } from '../icons/FormatAlignRightIcon';
+import { FormatBoldIcon } from '../icons/FormatBoldIcon';
+import { FormatItalicIcon } from '../icons/FormatItalicIcon';
+import { FormatListBulletedIcon } from '../icons/FormatListBulletedIcon';
+import { FormatListNumberedIcon } from '../icons/FormatListNumberedIcon';
+import { FormatSizeIcon } from '../icons/FormatSizeIcon';
+import { FormatUnderlinedIcon } from '../icons/FormatUnderlinedIcon';
+import { RichUtils } from '../classes/RichUtils';
+import { combine } from '../utils/combine';
+import { ActionIconButton } from './ActionIconButton';
+import { ActionsGroup } from './ActionsGroup';
 
 interface IProps {
     onClose: () => void;
 }
 
-const RichStylesActions = ({ onClose }: IProps): ReactElement => {
+export const RichStylesActions = ({ onClose }: IProps): ReactElement => {
     const formatting = useRichStyles();
 
     return (
@@ -104,5 +104,3 @@ const RichStylesActions = ({ onClose }: IProps): ReactElement => {
         </ActionsGroup>
     );
 };
-
-export default RichStylesActions;

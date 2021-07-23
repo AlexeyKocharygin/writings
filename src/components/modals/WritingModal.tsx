@@ -1,18 +1,18 @@
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-tagged-state';
-import intlState from '../../store/states/intlState';
-import ActionButton from '../ActionButton';
-import ActionsGroup from '../ActionsGroup';
-import combine from '../../utils/combine';
+import { intlState } from '../../store/states/intlState';
+import { ActionButton } from '../ActionButton';
+import { ActionsGroup } from '../ActionsGroup';
+import { combine } from '../../utils/combine';
 import { IWriting } from '../../classes/Database';
-import putWriting from '../../actions/putWriting';
-import shareWriting from '../../actions/shareWriting';
-import IosShareIcon from '../../icons/IosShareIcon';
-import Router from '../../classes/Router';
-import deleteWriting from '../../actions/deleteWriting';
-import DeleteOutlineIcon from '../../icons/DeleteOutlineIcon';
-import ToggledDate from '../ToggledDate';
-import EditIcon from '../../icons/EditIcon';
+import { putWriting } from '../../actions/putWriting';
+import { shareWriting } from '../../actions/shareWriting';
+import { IosShareIcon } from '../../icons/IosShareIcon';
+import { Router } from '../../classes/Router';
+import { deleteWriting } from '../../actions/deleteWriting';
+import { DeleteOutlineIcon } from '../../icons/DeleteOutlineIcon';
+import { ToggledDate } from '../ToggledDate';
+import { EditIcon } from '../../icons/EditIcon';
 
 interface IProps {
     writingId: string;
@@ -20,7 +20,7 @@ interface IProps {
     onClose: () => void;
 }
 
-const WritingModal = ({ writingId, writing, onClose }: IProps): ReactElement => {
+export const WritingModal = ({ writingId, writing, onClose }: IProps): ReactElement => {
     const { formatMessage } = useSelector(intlState);
 
     return (
@@ -68,5 +68,3 @@ const WritingModal = ({ writingId, writing, onClose }: IProps): ReactElement => 
         </>
     );
 };
-
-export default WritingModal;

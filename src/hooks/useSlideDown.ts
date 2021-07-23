@@ -1,6 +1,6 @@
 import { TouchEventHandler, useCallback, useEffect, useRef, useState } from 'react';
 
-const useSlideDown = (
+export const useSlideDown = (
     onSlideDown: () => void
 ): {
     onTouchStart: TouchEventHandler;
@@ -64,5 +64,3 @@ const useSlideDown = (
         diff: state ? state[1] - state[0] : 0
     };
 };
-
-export default useSlideDown;

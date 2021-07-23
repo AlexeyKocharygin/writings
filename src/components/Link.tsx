@@ -1,6 +1,6 @@
 import React, { ReactElement, TouchEventHandler } from 'react';
-import Router from '../classes/Router';
-import preventDefault from '../utils/preventDefault';
+import { Router } from '../classes/Router';
+import { preventDefault } from '../utils/preventDefault';
 
 interface IProps {
     'aria-label'?: string;
@@ -10,7 +10,7 @@ interface IProps {
     onTouchStart?: TouchEventHandler;
 }
 
-const Link = ({ 'aria-label': ariaLabel, className, href, children, onTouchStart }: IProps): ReactElement => (
+export const Link = ({ 'aria-label': ariaLabel, className, href, children, onTouchStart }: IProps): ReactElement => (
     <a
         aria-label={ariaLabel}
         className={className}
@@ -26,5 +26,3 @@ const Link = ({ 'aria-label': ariaLabel, className, href, children, onTouchStart
         {children}
     </a>
 );
-
-export default Link;

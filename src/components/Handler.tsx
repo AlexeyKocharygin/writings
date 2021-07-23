@@ -7,7 +7,7 @@ interface IProps {
     onTouchStart: TouchEventHandler;
 }
 
-const Handler = ({ className, onClose, onTouchStart }: IProps): ReactElement => (
+export const Handler = ({ className, onClose, onTouchStart }: IProps): ReactElement => (
     <div
         className={cx(
             className,
@@ -17,5 +17,3 @@ const Handler = ({ className, onClose, onTouchStart }: IProps): ReactElement => 
         onTouchStart={onTouchStart}
     />
 );
-
-export default Handler;

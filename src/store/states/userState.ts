@@ -1,10 +1,10 @@
 import { createState } from 'react-tagged-state';
-import resetEvent from '../events/resetEvent';
-import LocalStorage from '../../classes/LocalStorage';
+import { resetEvent } from '../events/resetEvent';
+import { LocalStorage } from '../../classes/LocalStorage';
 
 const getInitialState = () => LocalStorage.get('state/user') || null;
 
-const userState = createState(getInitialState());
+export const userState = createState(getInitialState());
 
 userState``((user) => {
     LocalStorage.set('state/user', user);
@@ -13,5 +13,3 @@ userState``((user) => {
 resetEvent``(() => {
     userState(getInitialState);
 });
-
-export default userState;

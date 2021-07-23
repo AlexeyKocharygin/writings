@@ -1,12 +1,12 @@
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-tagged-state';
 import cx from 'clsx';
-import CancelIcon from '../icons/CancelIcon';
-import SearchIcon from '../icons/SearchIcon';
-import intlState from '../store/states/intlState';
+import { CancelIcon } from '../icons/CancelIcon';
+import { SearchIcon } from '../icons/SearchIcon';
+import { intlState } from '../store/states/intlState';
 import { ISearch } from '../classes/LocalStorage';
-import preventBodyScroll from '../utils/preventBodyScroll';
-import IconButton from './IconButton';
+import { preventBodyScroll } from '../utils/preventBodyScroll';
+import { IconButton } from './IconButton';
 
 interface IProps {
     className?: string;
@@ -14,7 +14,7 @@ interface IProps {
     onChange: (nextValue: ISearch) => void;
 }
 
-const SearchInput = ({ className, value = null, onChange }: IProps): ReactElement => {
+export const SearchInput = ({ className, value = null, onChange }: IProps): ReactElement => {
     const { formatMessage } = useSelector(intlState);
 
     return (
@@ -68,5 +68,3 @@ const SearchInput = ({ className, value = null, onChange }: IProps): ReactElemen
         </div>
     );
 };
-
-export default SearchInput;

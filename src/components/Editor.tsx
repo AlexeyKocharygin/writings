@@ -1,8 +1,8 @@
 import React, { FocusEventHandler, HTMLAttributes, ReactElement } from 'react';
 import cx from 'clsx';
-import RichUtils from '../classes/RichUtils';
-import preventDefault from '../utils/preventDefault';
-import preventBodyScroll from '../utils/preventBodyScroll';
+import { RichUtils } from '../classes/RichUtils';
+import { preventDefault } from '../utils/preventDefault';
+import { preventBodyScroll } from '../utils/preventBodyScroll';
 
 interface IProps {
     className?: string;
@@ -13,7 +13,7 @@ interface IProps {
     onBlur?: FocusEventHandler;
 }
 
-const Editor = ({ className, inputMode, value, onChange, onFocus, onBlur }: IProps): ReactElement => (
+export const Editor = ({ className, inputMode, value, onChange, onFocus, onBlur }: IProps): ReactElement => (
     <div
         inputMode={inputMode}
         className={cx(className, 'content-editable')}
@@ -46,5 +46,3 @@ const Editor = ({ className, inputMode, value, onChange, onFocus, onBlur }: IPro
         }}
     />
 );
-
-export default Editor;

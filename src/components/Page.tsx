@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import cx from 'clsx';
-import useTransition from '../hooks/useTransition';
+import { useTransition } from '../hooks/useTransition';
 
 interface IProps {
     opened?: boolean;
@@ -8,7 +8,7 @@ interface IProps {
     children: any;
 }
 
-const Page = ({ opened, root, children }: IProps): ReactElement => {
+export const Page = ({ opened, root, children }: IProps): ReactElement => {
     const transition = useTransition(!!opened, 300);
 
     return (
@@ -28,5 +28,3 @@ const Page = ({ opened, root, children }: IProps): ReactElement => {
         </>
     );
 };
-
-export default Page;

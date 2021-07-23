@@ -6,8 +6,6 @@ interface IProps {
     children: any;
 }
 
-const Portal = ({ opened, children }: IProps): ReactElement => (
+export const Portal = ({ opened, children }: IProps): ReactElement => (
     <>{opened && createPortal(children, document.getElementById('root') || document.body)}</>
 );
-
-export default Portal;

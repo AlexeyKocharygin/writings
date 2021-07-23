@@ -10,7 +10,7 @@ export interface IFetch<Type, Args extends any[]> {
     (...any: Args): Promise<Type>;
 }
 
-const useFetch = <Result = null, Args extends any[] = []>(
+export const useFetch = <Result = null, Args extends any[] = []>(
     asyncFunction: IFetch<Result, Args>,
     ...args: Args
 ): IFetchState<Result> => {
@@ -48,5 +48,3 @@ const useFetch = <Result = null, Args extends any[] = []>(
 
     return state[0];
 };
-
-export default useFetch;

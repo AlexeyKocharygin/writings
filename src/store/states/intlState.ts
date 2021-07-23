@@ -1,8 +1,8 @@
 import { createState } from 'react-tagged-state';
 import localesRu from '../../locales/ru.json';
 import localesEn from '../../locales/en.json';
-import getBrowserLang, { IBrowserLang } from '../../utils/getBrowserLang';
-import langState from './langState';
+import { getBrowserLang, IBrowserLang } from '../../utils/getBrowserLang';
+import { langState } from './langState';
 
 export interface IFormatDate {
     (date: Date | number, format?: string): string;
@@ -39,10 +39,8 @@ const getIntl = (lang: IBrowserLang): IIntl => ({
     formatDate: getFormatDate(lang)
 });
 
-const intlState = createState<IIntl>(getIntl(getBrowserLang(langState())));
+export const intlState = createState<IIntl>(getIntl(getBrowserLang(langState())));
 
 langState``((lang) => {
     intlState(getIntl(getBrowserLang(lang)));
 });
-
-export default intlState;

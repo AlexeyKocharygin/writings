@@ -1,14 +1,14 @@
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-tagged-state';
 import cx from 'clsx';
-import intlState from '../store/states/intlState';
-import SearchIcon from '../icons/SearchIcon';
+import { intlState } from '../store/states/intlState';
+import { SearchIcon } from '../icons/SearchIcon';
 
 interface IProps {
     className?: string;
 }
 
-const NotFound = ({ className }: IProps): ReactElement => {
+export const NotFound = ({ className }: IProps): ReactElement => {
     const { formatMessage } = useSelector(intlState);
 
     return (
@@ -23,5 +23,3 @@ const NotFound = ({ className }: IProps): ReactElement => {
         </div>
     );
 };
-
-export default NotFound;

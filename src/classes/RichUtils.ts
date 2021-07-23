@@ -128,6 +128,4 @@ class RichUtilsClass {
     }
 }
 
-const RichUtils = new RichUtilsClass();
-
-export default RichUtils;
+export const RichUtils = new RichUtilsClass();

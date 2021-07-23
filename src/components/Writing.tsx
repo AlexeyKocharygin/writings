@@ -1,20 +1,20 @@
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-tagged-state';
 import cx from 'clsx';
-import intlState from '../store/states/intlState';
+import { intlState } from '../store/states/intlState';
 import { IWriting } from '../classes/Database';
-import useLongTouch from '../hooks/useLongTouch';
-import useToggle from '../hooks/useToggle';
-import Link from './Link';
-import WritingModal from './modals/WritingModal';
-import Modal from './Modal';
+import { useLongTouch } from '../hooks/useLongTouch';
+import { useToggle } from '../hooks/useToggle';
+import { Link } from './Link';
+import { WritingModal } from './modals/WritingModal';
+import { Modal } from './Modal';
 
 interface IProps {
     className?: string;
     writing: IWriting;
 }
 
-const Writing = ({ className, writing }: IProps): ReactElement => {
+export const Writing = ({ className, writing }: IProps): ReactElement => {
     const { formatMessage } = useSelector(intlState);
     const writingModal = useToggle();
     const onTouchStart = useLongTouch(writingModal.open);
@@ -43,5 +43,3 @@ const Writing = ({ className, writing }: IProps): ReactElement => {
         </>
     );
 };
-
-export default Writing;

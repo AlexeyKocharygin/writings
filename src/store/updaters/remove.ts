@@ -1,6 +1,6 @@
-import copy from './copy';
+import { copy } from './copy';
 
-const remove =
+export const remove =
     <Type>(key: string) =>
     (object: Record<string, Type>): Record<string, Type> => {
         const objectCopy = copy()(object);
@@ -9,5 +9,3 @@ const remove =
 
         return objectCopy;
     };
-
-export default remove;

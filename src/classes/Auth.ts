@@ -1,7 +1,7 @@
-import paramsToSearch from '../utils/paramsToSearch';
+import { paramsToSearch } from '../utils/paramsToSearch';
 import firebaseConfig from '../firebase.config.json';
-import getExpires from '../utils/getExpires';
-import searchToParams from '../utils/searchToParams';
+import { getExpires } from '../utils/getExpires';
+import { searchToParams } from '../utils/searchToParams';
 
 export interface IUser {
     localId: string;
@@ -131,6 +131,4 @@ class AuthClass {
     }
 }
 
-const Auth = new AuthClass(firebaseConfig);
-
-export default Auth;
+export const Auth = new AuthClass(firebaseConfig);

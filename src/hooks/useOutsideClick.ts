@@ -1,6 +1,8 @@
 import { RefObject, useEffect, useRef } from 'react';
 
-const useOutsideClick = <Type extends HTMLElement>(onOutsideClick: (event: MouseEvent) => void): RefObject<Type> => {
+export const useOutsideClick = <Type extends HTMLElement>(
+    onOutsideClick: (event: MouseEvent) => void
+): RefObject<Type> => {
     const ref = useRef<Type>(null);
 
     useEffect(() => {
@@ -21,5 +23,3 @@ const useOutsideClick = <Type extends HTMLElement>(onOutsideClick: (event: Mouse
 
     return ref;
 };
-
-export default useOutsideClick;

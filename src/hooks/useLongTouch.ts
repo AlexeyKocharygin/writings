@@ -1,6 +1,6 @@
 import { TouchEventHandler, useCallback, useEffect, useRef } from 'react';
 
-const useLongTouch = (onLongTouch: () => void): TouchEventHandler => {
+export const useLongTouch = (onLongTouch: () => void): TouchEventHandler => {
     const timeoutRef = useRef<any>();
     const onTouchEnd = useCallback(() => {
         clearTimeout(timeoutRef.current);
@@ -25,5 +25,3 @@ const useLongTouch = (onLongTouch: () => void): TouchEventHandler => {
 
     return onTouchStart;
 };
-
-export default useLongTouch;

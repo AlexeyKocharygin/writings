@@ -1,25 +1,25 @@
 import React, { ReactElement } from 'react';
 import { v1 as uuidv1 } from 'uuid';
 import { useSelector } from 'react-tagged-state';
-import AddCircleOutlineIcon from '../../icons/AddCircleOutlineIcon';
-import userState from '../../store/states/userState';
-import searchState from '../../store/states/searchState';
-import filteredWritingsSelector from '../../store/selectors/filteredWritingsSelector';
-import useFetch from '../../hooks/useFetch';
-import fetchWritings from '../../actions/fetchWritings';
-import useSavedScroll from '../../hooks/useSavedScroll';
-import SearchInput from '../SearchInput';
-import Avatar from '../Avatar';
-import WritingsList from '../WritingsList';
-import NotFound from '../NotFound';
-import NoWritings from '../NoWritings';
-import useToggle from '../../hooks/useToggle';
-import Modal from '../Modal';
-import IconButton from '../IconButton';
-import SettingsModal from '../modals/SettingsModal';
-import Router from '../../classes/Router';
+import { AddCircleOutlineIcon } from '../../icons/AddCircleOutlineIcon';
+import { userState } from '../../store/states/userState';
+import { searchState } from '../../store/states/searchState';
+import { filteredWritingsSelector } from '../../store/selectors/filteredWritingsSelector';
+import { useFetch } from '../../hooks/useFetch';
+import { fetchWritings } from '../../actions/fetchWritings';
+import { useSavedScroll } from '../../hooks/useSavedScroll';
+import { SearchInput } from '../SearchInput';
+import { Avatar } from '../Avatar';
+import { WritingsList } from '../WritingsList';
+import { NotFound } from '../NotFound';
+import { NoWritings } from '../NoWritings';
+import { useToggle } from '../../hooks/useToggle';
+import { Modal } from '../Modal';
+import { IconButton } from '../IconButton';
+import { SettingsModal } from '../modals/SettingsModal';
+import { Router } from '../../classes/Router';
 
-const WritingsPage = (): ReactElement => {
+export const WritingsPage = (): ReactElement => {
     const user = useSelector(userState);
     const search = useSelector(searchState);
     const filteredWritings = useSelector(filteredWritingsSelector);
@@ -54,5 +54,3 @@ const WritingsPage = (): ReactElement => {
         </>
     );
 };
-
-export default WritingsPage;

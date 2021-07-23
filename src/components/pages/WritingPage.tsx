@@ -1,26 +1,26 @@
 import React, { ReactElement, useState } from 'react';
 import { useSelector } from 'react-tagged-state';
-import putWriting from '../../actions/putWriting';
-import MoreHorizIcon from '../../icons/MoreHorizIcon';
-import writingsState from '../../store/states/writingsState';
-import fetchWriting from '../../actions/fetchWriting';
-import useFetch from '../../hooks/useFetch';
-import usePermanentMatch from '../../hooks/usePermanentMatch';
-import useSavedScroll from '../../hooks/useSavedScroll';
-import IconButton from '../IconButton';
-import Editor from '../Editor';
-import CornerAction from '../CornerAction';
-import Router from '../../classes/Router';
-import ArrowBackIosIcon from '../../icons/ArrowBackIosIcon';
-import useToggle from '../../hooks/useToggle';
-import Modal from '../Modal';
-import WritingModal from '../modals/WritingModal';
-import preventDefault from '../../utils/preventDefault';
-import AddIcon from '../../icons/AddIcon';
-import Menu from '../Menu';
-import RichStylesActions from '../RichStylesActions';
+import { putWriting } from '../../actions/putWriting';
+import { MoreHorizIcon } from '../../icons/MoreHorizIcon';
+import { writingsState } from '../../store/states/writingsState';
+import { fetchWriting } from '../../actions/fetchWriting';
+import { useFetch } from '../../hooks/useFetch';
+import { usePermanentMatch } from '../../hooks/usePermanentMatch';
+import { useSavedScroll } from '../../hooks/useSavedScroll';
+import { IconButton } from '../IconButton';
+import { Editor } from '../Editor';
+import { CornerAction } from '../CornerAction';
+import { Router } from '../../classes/Router';
+import { ArrowBackIosIcon } from '../../icons/ArrowBackIosIcon';
+import { useToggle } from '../../hooks/useToggle';
+import { Modal } from '../Modal';
+import { WritingModal } from '../modals/WritingModal';
+import { preventDefault } from '../../utils/preventDefault';
+import { AddIcon } from '../../icons/AddIcon';
+import { Menu } from '../Menu';
+import { RichStylesActions } from '../RichStylesActions';
 
-const WritingPage = (): ReactElement => {
+export const WritingPage = (): ReactElement => {
     const { writingId } = usePermanentMatch<{ writingId: string }>('/writings/:writingId');
     const writing = useSelector(() => writingsState()[writingId], [writingId]);
     const richStyleMenu = useToggle();
@@ -62,5 +62,3 @@ const WritingPage = (): ReactElement => {
         </>
     );
 };
-
-export default WritingPage;

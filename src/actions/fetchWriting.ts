@@ -1,12 +1,12 @@
-import writingsState from '../store/states/writingsState';
-import add from '../store/updaters/add';
-import remove from '../store/updaters/remove';
-import withCache from '../utils/withCache';
-import IndexedDB from '../classes/IndexedDB';
-import Database from '../classes/Database';
-import getLocalId from './getLocalId';
+import { writingsState } from '../store/states/writingsState';
+import { add } from '../store/updaters/add';
+import { remove } from '../store/updaters/remove';
+import { withCache } from '../utils/withCache';
+import { IndexedDB } from '../classes/IndexedDB';
+import { Database } from '../classes/Database';
+import { getLocalId } from './getLocalId';
 
-const fetchWriting = withCache(
+export const fetchWriting = withCache(
     (writingId: string) => `fetchWriting/${writingId}`,
     async (writingId: string): Promise<void> => {
         if (!writingId) {
@@ -38,5 +38,3 @@ const fetchWriting = withCache(
         }
     }
 );
-
-export default fetchWriting;

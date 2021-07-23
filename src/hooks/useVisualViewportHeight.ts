@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const useVisualViewportHeight = (): void => {
+export const useVisualViewportHeight = (): void => {
     useEffect(() => {
         if (window.visualViewport) {
             const handleResize = () => {
@@ -21,5 +21,3 @@ const useVisualViewportHeight = (): void => {
 
     return;
 };
-
-export default useVisualViewportHeight;

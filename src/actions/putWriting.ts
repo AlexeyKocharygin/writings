@@ -1,11 +1,11 @@
-import writingsState from '../store/states/writingsState';
-import add from '../store/updaters/add';
-import Database, { IWriting } from '../classes/Database';
-import IndexedDB from '../classes/IndexedDB';
-import putWritingsUpdatedOn from './putWritingsUpdatedOn';
-import getLocalId from './getLocalId';
+import { writingsState } from '../store/states/writingsState';
+import { add } from '../store/updaters/add';
+import { Database, IWriting } from '../classes/Database';
+import { IndexedDB } from '../classes/IndexedDB';
+import { putWritingsUpdatedOn } from './putWritingsUpdatedOn';
+import { getLocalId } from './getLocalId';
 
-const putWriting = async (writingId: string, data: Partial<IWriting>): Promise<void> => {
+export const putWriting = async (writingId: string, data: Partial<IWriting>): Promise<void> => {
     if (!writingId) {
         return;
     }
@@ -29,5 +29,3 @@ const putWriting = async (writingId: string, data: Partial<IWriting>): Promise<v
     await putWritingsUpdatedOn();
     await IndexedDB.put('writings', extendedWriting);
 };
-
-export default putWriting;

@@ -1,23 +1,23 @@
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-tagged-state';
-import signOut from '../../actions/signOut';
-import themeState from '../../store/states/themeState';
-import langState from '../../store/states/langState';
-import intlState from '../../store/states/intlState';
-import AutorenewIcon from '../../icons/AutorenewIcon';
-import LogoutIcon from '../../icons/LogoutIcon';
-import ActionButton from '../ActionButton';
-import ActionsGroup from '../ActionsGroup';
-import ActionSelect from '../ActionSelect';
-import combine from '../../utils/combine';
-import Avatar from '../Avatar';
-import userState from '../../store/states/userState';
+import { signOut } from '../../actions/signOut';
+import { themeState } from '../../store/states/themeState';
+import { langState } from '../../store/states/langState';
+import { intlState } from '../../store/states/intlState';
+import { AutorenewIcon } from '../../icons/AutorenewIcon';
+import { LogoutIcon } from '../../icons/LogoutIcon';
+import { ActionButton } from '../ActionButton';
+import { ActionsGroup } from '../ActionsGroup';
+import { ActionSelect } from '../ActionSelect';
+import { combine } from '../../utils/combine';
+import { Avatar } from '../Avatar';
+import { userState } from '../../store/states/userState';
 
 interface IProps {
     onClose: () => void;
 }
 
-const SettingsModal = ({ onClose }: IProps): ReactElement => {
+export const SettingsModal = ({ onClose }: IProps): ReactElement => {
     const user = useSelector(userState);
     const themeValue = useSelector(themeState);
     const lang = useSelector(langState);
@@ -83,5 +83,3 @@ const SettingsModal = ({ onClose }: IProps): ReactElement => {
         </>
     );
 };
-
-export default SettingsModal;

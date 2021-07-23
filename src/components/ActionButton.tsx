@@ -7,7 +7,7 @@ interface IProps {
     onClick?: MouseEventHandler;
 }
 
-const ActionButton = ({ className, children, onClick }: IProps): ReactElement => (
+export const ActionButton = ({ className, children, onClick }: IProps): ReactElement => (
     <button
         className={cx(
             className,
@@ -18,5 +18,3 @@ const ActionButton = ({ className, children, onClick }: IProps): ReactElement =>
         {children}
     </button>
 );
-
-export default ActionButton;

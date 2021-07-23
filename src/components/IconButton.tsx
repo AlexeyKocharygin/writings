@@ -9,7 +9,13 @@ interface IProps {
     onClick?: MouseEventHandler;
 }
 
-const IconButton = ({ 'aria-label': ariaLabel, className, children, onMouseDown, onClick }: IProps): ReactElement => (
+export const IconButton = ({
+    'aria-label': ariaLabel,
+    className,
+    children,
+    onMouseDown,
+    onClick
+}: IProps): ReactElement => (
     <button
         aria-label={ariaLabel}
         onClick={onClick}
@@ -26,5 +32,3 @@ const IconButton = ({ 'aria-label': ariaLabel, className, children, onMouseDown,
 IconButton.defaultProps = {
     type: 'button'
 };
-
-export default IconButton;

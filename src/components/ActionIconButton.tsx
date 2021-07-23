@@ -9,7 +9,13 @@ interface IProps {
     onClick?: MouseEventHandler;
 }
 
-const ActionIconButton = ({ 'aria-label': ariaLabel, className, children, active, onClick }: IProps): ReactElement => (
+export const ActionIconButton = ({
+    'aria-label': ariaLabel,
+    className,
+    children,
+    active,
+    onClick
+}: IProps): ReactElement => (
     <button
         aria-label={ariaLabel}
         className={cx(
@@ -22,5 +28,3 @@ const ActionIconButton = ({ 'aria-label': ariaLabel, className, children, active
         {children}
     </button>
 );
-
-export default ActionIconButton;

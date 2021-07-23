@@ -1,7 +1,7 @@
 let pending: Record<string, Promise<void>> = {};
 let fulfilled: Record<string, boolean> = {};
 
-const withCache = <Type extends (...args: any[]) => Promise<void>>(
+export const withCache = <Type extends (...args: any[]) => Promise<void>>(
     getName: (...args: Parameters<Type>) => string,
     action: Type
 ) => {
@@ -32,5 +32,3 @@ withCache.clear = () => {
     pending = {};
     fulfilled = {};
 };
-
-export default withCache;

@@ -1,6 +1,6 @@
-import getScrollableParent from './getScrollableParent';
+import { getScrollableParent } from './getScrollableParent';
 
-const preventBodyScroll = (event?: any): void => {
+export const preventBodyScroll = (event?: any): void => {
     window.addEventListener(
         'scroll',
         () => {
@@ -15,5 +15,3 @@ const preventBodyScroll = (event?: any): void => {
         { passive: true, once: true }
     );
 };
-
-export default preventBodyScroll;

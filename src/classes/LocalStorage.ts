@@ -32,6 +32,4 @@ class LocalStorageClass {
     }
 }
 
-const LocalStorage = new LocalStorageClass();
-
-export default LocalStorage;
+export const LocalStorage = new LocalStorageClass();

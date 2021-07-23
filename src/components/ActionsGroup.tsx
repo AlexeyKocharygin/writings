@@ -7,7 +7,7 @@ interface IProps {
     children: any;
 }
 
-const ActionsGroup = ({ className, horizontal, children }: IProps): ReactElement => (
+export const ActionsGroup = ({ className, horizontal, children }: IProps): ReactElement => (
     <div
         className={cx(
             className,
@@ -18,5 +18,3 @@ const ActionsGroup = ({ className, horizontal, children }: IProps): ReactElement
         {children}
     </div>
 );
-
-export default ActionsGroup;

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import shallowEqual from '../utils/shallowEqual';
-import RichUtils from '../classes/RichUtils';
+import { shallowEqual } from '../utils/shallowEqual';
+import { RichUtils } from '../classes/RichUtils';
 
-const useRichStyles = (): typeof RichUtils.styles => {
+export const useRichStyles = (): typeof RichUtils.styles => {
     const [state, setState] = useState(() => RichUtils.styles);
 
     useEffect(() => {
@@ -29,5 +29,3 @@ const useRichStyles = (): typeof RichUtils.styles => {
 
     return state;
 };
-
-export default useRichStyles;

@@ -1,13 +1,13 @@
-import writingsState from '../store/states/writingsState';
-import objectToArray from '../utils/objectToArray';
-import arrayToObject from '../utils/arrayToObject';
-import LocalStorage from '../classes/LocalStorage';
-import withCache from '../utils/withCache';
-import IndexedDB from '../classes/IndexedDB';
-import Database from '../classes/Database';
-import getLocalId from './getLocalId';
+import { writingsState } from '../store/states/writingsState';
+import { objectToArray } from '../utils/objectToArray';
+import { arrayToObject } from '../utils/arrayToObject';
+import { LocalStorage } from '../classes/LocalStorage';
+import { withCache } from '../utils/withCache';
+import { IndexedDB } from '../classes/IndexedDB';
+import { Database } from '../classes/Database';
+import { getLocalId } from './getLocalId';
 
-const fetchWritings = withCache(
+export const fetchWritings = withCache(
     () => 'fetchWritings',
     async (): Promise<void> => {
         const indexedDBResult = arrayToObject(await IndexedDB.getAll('writings'), 'id');
@@ -34,5 +34,3 @@ const fetchWritings = withCache(
         }
     }
 );
-
-export default fetchWritings;

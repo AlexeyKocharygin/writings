@@ -1,4 +1,4 @@
-const promisifyIDBRequest = <Type>(request: IDBRequest<Type>): Promise<Type> =>
+export const promisifyIDBRequest = <Type>(request: IDBRequest<Type>): Promise<Type> =>
     new Promise((resolve, reject) => {
         request.onsuccess = () => {
             resolve(request.result);
@@ -7,5 +7,3 @@ const promisifyIDBRequest = <Type>(request: IDBRequest<Type>): Promise<Type> =>
             reject(event);
         };
     });
-
-export default promisifyIDBRequest;

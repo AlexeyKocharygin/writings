@@ -1,6 +1,6 @@
 import firebaseConfig from '../firebase.config.json';
-import paramsToSearch from '../utils/paramsToSearch';
-import getToken from '../actions/getToken';
+import { paramsToSearch } from '../utils/paramsToSearch';
+import { getToken } from '../actions/getToken';
 
 export interface IWriting {
     id: string;
@@ -95,6 +95,4 @@ class DatabaseClass {
     }
 }
 
-const Database = new DatabaseClass(firebaseConfig);
-
-export default Database;
+export const Database = new DatabaseClass(firebaseConfig);

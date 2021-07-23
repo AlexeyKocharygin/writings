@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const useTouchEvents = (): void => {
+export const useTouchEvents = (): void => {
     useEffect(() => {
         const handleTouchStart = () => {};
 
@@ -11,5 +11,3 @@ const useTouchEvents = (): void => {
         };
     }, []);
 };
-
-export default useTouchEvents;

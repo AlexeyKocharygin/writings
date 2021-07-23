@@ -1,10 +1,10 @@
 import { createState, createEffect } from 'react-tagged-state';
-import resetEvent from '../events/resetEvent';
-import LocalStorage from '../../classes/LocalStorage';
+import { resetEvent } from '../events/resetEvent';
+import { LocalStorage } from '../../classes/LocalStorage';
 
 const getInitialState = () => LocalStorage.get('state/theme') || null;
 
-const themeState = createState(getInitialState());
+export const themeState = createState(getInitialState());
 
 createEffect(() => {
     if (
@@ -26,5 +26,3 @@ themeState``((theme) => {
 resetEvent``(() => {
     themeState(getInitialState);
 });
-
-export default themeState;

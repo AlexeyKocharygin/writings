@@ -1,7 +1,7 @@
 import React, { ReactElement, useState } from 'react';
 import { useSelector } from 'react-tagged-state';
 import cx from 'clsx';
-import intlState from '../store/states/intlState';
+import { intlState } from '../store/states/intlState';
 
 interface IProps {
     className?: string;
@@ -9,7 +9,7 @@ interface IProps {
     updatedOn?: number;
 }
 
-const ToggledDate = ({ className, createdOn = Date.now(), updatedOn = Date.now() }: IProps): ReactElement => {
+export const ToggledDate = ({ className, createdOn = Date.now(), updatedOn = Date.now() }: IProps): ReactElement => {
     const [isCreated, setIsCreated] = useState<null | boolean>(null);
     const { formatMessage, formatDate } = useSelector(intlState);
 
@@ -24,5 +24,3 @@ const ToggledDate = ({ className, createdOn = Date.now(), updatedOn = Date.now()
         </span>
     );
 };
-
-export default ToggledDate;

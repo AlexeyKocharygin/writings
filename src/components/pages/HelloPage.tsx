@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-tagged-state';
-import signInWithGoogle from '../../actions/signInWithGoogle';
-import intlState from '../../store/states/intlState';
-import SignInWithGoogleButton from '../SignInWithGoogleButton';
-import LockIcon from '../../icons/LockIcon';
+import { signInWithGoogle } from '../../actions/signInWithGoogle';
+import { intlState } from '../../store/states/intlState';
+import { SignInWithGoogleButton } from '../SignInWithGoogleButton';
+import { LockIcon } from '../../icons/LockIcon';
 
-const HelloPage = (): ReactElement => {
+export const HelloPage = (): ReactElement => {
     const { formatMessage } = useSelector(intlState);
 
     return (
@@ -20,5 +20,3 @@ const HelloPage = (): ReactElement => {
         </>
     );
 };
-
-export default HelloPage;

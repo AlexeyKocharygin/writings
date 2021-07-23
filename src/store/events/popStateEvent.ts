@@ -1,5 +1,3 @@
 import { createEvent } from 'react-tagged-state';
 
-const popStateEvent = createEvent();
-
-export default popStateEvent;
+export const popStateEvent = createEvent();

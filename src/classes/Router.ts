@@ -1,4 +1,4 @@
-import popStateEvent from '../store/events/popStateEvent';
+import { popStateEvent } from '../store/events/popStateEvent';
 
 class RouterClass {
     constructor() {
@@ -27,6 +27,4 @@ class RouterClass {
     }
 }
 
-const Router = new RouterClass();
-
-export default Router;
+export const Router = new RouterClass();

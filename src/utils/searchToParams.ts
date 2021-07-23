@@ -1,4 +1,4 @@
-const searchToParams = <Type extends Record<string, string>>(search: string): Type => {
+export const searchToParams = <Type extends Record<string, string>>(search: string): Type => {
     const result: Record<string, string> = {};
     const params = new URLSearchParams(search.startsWith('?') ? search.slice(1) : search);
 
@@ -8,5 +8,3 @@ const searchToParams = <Type extends Record<string, string>>(search: string): Ty
 
     return result as Type;
 };
-
-export default searchToParams;

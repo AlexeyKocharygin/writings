@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
 import cx from 'clsx';
-import useTransition from '../hooks/useTransition';
-import useOutsideClick from '../hooks/useOutsideClick';
-import useSlideDown from '../hooks/useSlideDown';
-import Portal from './Portal';
-import Handler from './Handler';
+import { useTransition } from '../hooks/useTransition';
+import { useOutsideClick } from '../hooks/useOutsideClick';
+import { useSlideDown } from '../hooks/useSlideDown';
+import { Portal } from './Portal';
+import { Handler } from './Handler';
 
 interface IProps {
     opened?: boolean;
@@ -12,7 +12,7 @@ interface IProps {
     children: any;
 }
 
-const Modal = ({ opened, children, onClose }: IProps): ReactElement => {
+export const Modal = ({ opened, children, onClose }: IProps): ReactElement => {
     const transition = useTransition(!!opened, 300);
     const ref = useOutsideClick<HTMLDivElement>(onClose);
     const { onTouchStart, dragging, diff } = useSlideDown(onClose);
@@ -41,5 +41,3 @@ const Modal = ({ opened, children, onClose }: IProps): ReactElement => {
         </Portal>
     );
 };
-
-export default Modal;

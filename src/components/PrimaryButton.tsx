@@ -7,7 +7,7 @@ interface IProps {
     onClick?: MouseEventHandler;
 }
 
-const PrimaryButton = ({ className, children, onClick }: IProps): ReactElement => (
+export const PrimaryButton = ({ className, children, onClick }: IProps): ReactElement => (
     <button
         className={cx(
             className,
@@ -22,5 +22,3 @@ const PrimaryButton = ({ className, children, onClick }: IProps): ReactElement =
 PrimaryButton.defaultProps = {
     type: 'button'
 };
-
-export default PrimaryButton;

@@ -1,7 +1,7 @@
-import writingsState from '../store/states/writingsState';
-import htmlToText from '../utils/htmlToText';
+import { writingsState } from '../store/states/writingsState';
+import { htmlToText } from '../utils/htmlToText';
 
-const shareWriting = async (writingId: string): Promise<void> => {
+export const shareWriting = async (writingId: string): Promise<void> => {
     const writing = writingsState()[writingId];
 
     if (!writing) {
@@ -19,5 +19,3 @@ const shareWriting = async (writingId: string): Promise<void> => {
         await window.navigator.clipboard.writeText(`${writing.title}\n${htmlToText(writing.content)}`);
     }
 };
-
-export default shareWriting;

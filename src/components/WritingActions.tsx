@@ -1,22 +1,22 @@
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-tagged-state';
-import combine from '../utils/combine';
-import shareWriting from '../actions/shareWriting';
-import IosShareIcon from '../icons/IosShareIcon';
-import Router from '../classes/Router';
-import deleteWriting from '../actions/deleteWriting';
-import DeleteOutlineIcon from '../icons/DeleteOutlineIcon';
+import { combine } from '../utils/combine';
+import { shareWriting } from '../actions/shareWriting';
+import { IosShareIcon } from '../icons/IosShareIcon';
+import { Router } from '../classes/Router';
+import { deleteWriting } from '../actions/deleteWriting';
+import { DeleteOutlineIcon } from '../icons/DeleteOutlineIcon';
 import { IWriting } from '../classes/Database';
-import intlState from '../store/states/intlState';
-import ActionButton from './ActionButton';
-import ActionsGroup from './ActionsGroup';
+import { intlState } from '../store/states/intlState';
+import { ActionButton } from './ActionButton';
+import { ActionsGroup } from './ActionsGroup';
 
 interface IProps {
     writing?: IWriting;
     onClose: () => void;
 }
 
-const WritingActions = ({ writing, onClose }: IProps): ReactElement => {
+export const WritingActions = ({ writing, onClose }: IProps): ReactElement => {
     const { formatMessage } = useSelector(intlState);
 
     return (
@@ -43,5 +43,3 @@ const WritingActions = ({ writing, onClose }: IProps): ReactElement => {
         </ActionsGroup>
     );
 };
-
-export default WritingActions;
