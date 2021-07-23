@@ -10,24 +10,32 @@ import { PrimaryButton } from './PrimaryButton';
 
 interface IProps {
     className?: string;
+    isLoading?: boolean;
 }
 
-export const NoWritings = ({ className }: IProps): ReactElement => {
+export const NoWritings = ({ className, isLoading }: IProps): ReactElement => {
     const { formatMessage } = useSelector(intlState);
 
     return (
         <div
             className={cx(
                 className,
-                'dark:text-light-gray-2 flex flex-auto flex-col items-center justify-center text-dark-gray-2'
+                'flex flex-auto flex-col items-center justify-center',
+                isLoading
+                    ? 'dark:text-dark-blue text-light-blue animate-pulse'
+                    : 'dark:text-light-gray-2  text-dark-gray-2'
             )}
         >
             <DescriptionIcon className="h-12 mb-4 w-12" />
-            <span className="mb-8 text-center text-sm">{formatMessage('noWritings')}</span>
-            <PrimaryButton onClick={() => Router.push(`/writings/${uuidv1()}`)}>
-                <AddCircleOutlineIcon className="mr-2" />
-                {formatMessage('add')}
-            </PrimaryButton>
+            {!isLoading && (
+                <>
+                    <span className="mb-8 text-center text-sm">{formatMessage('noWritings')}</span>
+                    <PrimaryButton onClick={() => Router.push(`/writings/${uuidv1()}`)}>
+                        <AddCircleOutlineIcon className="mr-2" />
+                        {formatMessage('add')}
+                    </PrimaryButton>
+                </>
+            )}
         </div>
     );
 };

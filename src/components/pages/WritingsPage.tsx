@@ -24,8 +24,8 @@ export const WritingsPage = (): ReactElement => {
     const search = useSelector(searchState);
     const filteredWritings = useSelector(filteredWritingsSelector);
     const settingsModal = useToggle();
+    const { isLoading } = useFetch(fetchWritings);
 
-    useFetch(fetchWritings);
     useSavedScroll('/');
 
     return (
@@ -44,8 +44,8 @@ export const WritingsPage = (): ReactElement => {
             )}
             {!filteredWritings.length && (
                 <>
-                    {search !== null && <NotFound />}
-                    {search === null && <NoWritings />}
+                    {search !== null && <NotFound isLoading={isLoading} />}
+                    {search === null && <NoWritings isLoading={isLoading} />}
                 </>
             )}
             <Modal opened={settingsModal.opened} onClose={settingsModal.close}>
