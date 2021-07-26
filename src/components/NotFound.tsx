@@ -16,10 +16,8 @@ export const NotFound = ({ className, isLoading }: IProps): ReactElement => {
         <div
             className={cx(
                 className,
-                'flex flex-auto flex-col items-center justify-center',
-                isLoading
-                    ? 'dark:text-dark-blue text-light-blue animate-pulse'
-                    : 'dark:text-light-gray-2  text-dark-gray-2'
+                'dark:text-light-gray-2 flex flex-auto flex-col items-center justify-center text-dark-gray-2',
+                isLoading && 'animate-pulse'
             )}
         >
             <SearchIcon className="h-12 mb-4 w-12" />

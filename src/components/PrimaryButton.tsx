@@ -11,7 +11,7 @@ export const PrimaryButton = ({ className, children, onClick }: IProps): ReactEl
     <button
         className={cx(
             className,
-            'active:bg-dark-gray-6 bg-black dark:active:bg-dark-gray-5 dark:bg-dark-gray-6 duration-300 flex items-center justify-center min-w-[75%] p-4 rounded-xl shadow-xl text-white transition-color'
+            'active:bg-light-gray-5 bg-light-gray-6 dark:active:bg-dark-gray-5 dark:bg-dark-gray-6 duration-300 flex items-center justify-center min-w-[75%] p-4 rounded-xl shadow-xl transition-color'
         )}
         onClick={onClick}
     >

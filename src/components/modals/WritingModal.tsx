@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-tagged-state';
 import { intlState } from '../../store/states/intlState';
-import { ActionButton } from '../ActionButton';
-import { ActionsGroup } from '../ActionsGroup';
+import { ModalButton } from '../ModalButton';
+import { ModalGroup } from '../ModalGroup';
 import { combine } from '../../utils/combine';
 import { IWriting } from '../../classes/Database';
 import { putWriting } from '../../actions/putWriting';
@@ -29,29 +29,34 @@ export const WritingModal = ({ writingId, writing, onClose }: IProps): ReactElem
                 <span className="mb-4 truncate">{writing?.title || formatMessage('noTitle')}</span>
                 <ToggledDate createdOn={writing?.createdOn} updatedOn={writing?.updatedOn} />
             </div>
-            <ActionsGroup className="mb-4">
-                <ActionButton
-                    onClick={combine(() => {
+            <ModalGroup className="mb-4">
+                <ModalButton
+                    onClick={() => {
                         const result = prompt(formatMessage('saveAs'), writing?.title);
 
-                        if (typeof result === 'string' && result !== (writing?.title || '')) {
-                            onClose();
+                        if (typeof result !== 'string') {
+                            return;
+                        }
+
+                        if (result !== (writing?.title || '')) {
                             putWriting(writingId, { title: result });
                         }
-                    })}
+
+                        onClose();
+                    }}
                 >
                     <span className="flex-auto text-left">{formatMessage('saveAs')}</span>
                     <EditIcon />
-                </ActionButton>
-            </ActionsGroup>
-            <ActionsGroup className="flex-shrink-0">
+                </ModalButton>
+            </ModalGroup>
+            <ModalGroup className="flex-shrink-0">
                 {!!writing && (
-                    <ActionButton onClick={combine(onClose, () => shareWriting(writing?.id))}>
+                    <ModalButton onClick={combine(onClose, () => shareWriting(writing?.id))}>
                         <span className="flex-auto text-left">{formatMessage('share')}</span>
                         <IosShareIcon />
-                    </ActionButton>
+                    </ModalButton>
                 )}
-                <ActionButton
+                <ModalButton
                     onClick={() => {
                         onClose();
                         Router.replace('/');
@@ -63,8 +68,8 @@ export const WritingModal = ({ writingId, writing, onClose }: IProps): ReactElem
                 >
                     <span className="flex-auto text-left">{formatMessage('remove')}</span>
                     <DeleteOutlineIcon />
-                </ActionButton>
-            </ActionsGroup>
+                </ModalButton>
+            </ModalGroup>
         </>
     );
 };

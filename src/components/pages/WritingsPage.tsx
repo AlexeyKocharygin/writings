@@ -7,7 +7,6 @@ import { searchState } from '../../store/states/searchState';
 import { filteredWritingsSelector } from '../../store/selectors/filteredWritingsSelector';
 import { useFetch } from '../../hooks/useFetch';
 import { fetchWritings } from '../../actions/fetchWritings';
-import { useSavedScroll } from '../../hooks/useSavedScroll';
 import { SearchInput } from '../SearchInput';
 import { Avatar } from '../Avatar';
 import { WritingsList } from '../WritingsList';
@@ -26,19 +25,19 @@ export const WritingsPage = (): ReactElement => {
     const settingsModal = useToggle();
     const { isLoading } = useFetch(fetchWritings);
 
-    useSavedScroll('/');
-
     return (
         <>
-            <div className="flex items-center justify-between mb-8 sticky top-0 z-10">
-                <IconButton aria-label="settings" onClick={settingsModal.toggle}>
-                    <Avatar className="h-6 w-6" src={user?.photoUrl} />
-                </IconButton>
-                <IconButton aria-label="add writing" onClick={() => Router.push(`/writings/${uuidv1()}`)}>
-                    <AddCircleOutlineIcon />
-                </IconButton>
+            <div className="flex flex-col py-8 sticky top-0 z-10">
+                <div className="flex items-center justify-between mb-8">
+                    <IconButton aria-label="settings" onClick={settingsModal.toggle}>
+                        <Avatar className="h-6 w-6" src={user?.photoUrl} />
+                    </IconButton>
+                    <IconButton aria-label="add writing" onClick={() => Router.push(`/writings/${uuidv1()}`)}>
+                        <AddCircleOutlineIcon />
+                    </IconButton>
+                </div>
+                <SearchInput value={search} onChange={(value) => searchState(value)} />
             </div>
-            <SearchInput className="mb-8 sticky top-14 z-10" value={search} onChange={(value) => searchState(value)} />
             {!!filteredWritings.length && (
                 <WritingsList className="flex-auto flex-shrink-0" writings={filteredWritings} />
             )}

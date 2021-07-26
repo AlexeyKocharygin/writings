@@ -27,17 +27,13 @@ module.exports = {
                         6: 'rgb(242, 242, 247)'
                     }
                 }
-            },
-            boxShadow: {
-                't-xl': '0 -20px 25px -5px rgba(0, 0, 0, 0.1), 0 -10px 10px -5px rgba(0, 0, 0, 0.04)',
-                'l-xl': '-20px 0 25px -5px rgba(0, 0, 0, 0.1), -10px 0 10px -5px rgba(0, 0, 0, 0.04)'
             }
         }
     },
     variants: {
         extend: {}
     },
-    plugins: [],
+    plugins: [require('@tailwindcss/line-clamp')],
     corePlugins: {
         preflight: false
     }

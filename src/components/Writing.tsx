@@ -35,7 +35,7 @@ export const Writing = ({ className, writing }: IProps): ReactElement => {
                         dangerouslySetInnerHTML={{ __html: writing.content.slice(0, 1000) }}
                     />
                 </div>
-                <span className="max-w-full truncate">{writing.title || formatMessage('noTitle')}</span>
+                <span className="line-clamp-2 max-w-full text-center">{writing.title || formatMessage('noTitle')}</span>
             </Link>
             <Modal opened={writingModal.opened} onClose={writingModal.close}>
                 <WritingModal writingId={writing.id} writing={writing} onClose={writingModal.close} />

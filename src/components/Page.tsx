@@ -1,30 +1,15 @@
 import React, { ReactElement } from 'react';
 import cx from 'clsx';
-import { useTransition } from '../hooks/useTransition';
 
 interface IProps {
     opened?: boolean;
-    root?: boolean;
     children: any;
 }
 
-export const Page = ({ opened, root, children }: IProps): ReactElement => {
-    const transition = useTransition(!!opened, 300);
-
-    return (
-        <>
-            {transition !== 'closed' && (
-                <div className="absolute flex flex-col h-full left-0 top-0 w-full z-10">
-                    <div
-                        className={cx(
-                            'bg-white dark:bg-black duration-300 flex flex-auto flex-col overflow-auto px-4 py-8 transform-gpu transition-transform',
-                            !root && !['opening', 'opened'].includes(transition) && 'translate-x-full'
-                        )}
-                    >
-                        {children}
-                    </div>
-                </div>
-            )}
-        </>
-    );
-};
+export const Page = ({ opened, children }: IProps): ReactElement => (
+    <>
+        {opened && (
+            <div className={cx('bg-white dark:bg-black flex flex-col min-h-screen px-4 w-full')}>{children}</div>
+        )}
+    </>
+);

@@ -5,7 +5,7 @@ import { preventDefault } from '../utils/preventDefault';
 interface IProps {
     'aria-label'?: string;
     className?: string;
-    href?: string;
+    href: string;
     children: any;
     onTouchStart?: TouchEventHandler;
 }
@@ -16,10 +16,8 @@ export const Link = ({ 'aria-label': ariaLabel, className, href, children, onTou
         className={className}
         href={href}
         onClick={(event) => {
-            if (href) {
-                preventDefault(event);
-                Router.push(href);
-            }
+            preventDefault(event);
+            Router.push(href);
         }}
         onTouchStart={onTouchStart}
     >

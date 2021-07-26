@@ -14,7 +14,7 @@ export const Avatar = ({ className, src }: IProps): ReactElement => {
     }, [src]);
 
     return (
-        <div className={cx(className, 'bg-black dark:bg-gray-6 overflow-hidden rounded-full')}>
+        <div className={cx(className, 'bg-white dark:black overflow-hidden rounded-full')}>
             {!isError && <img className="h-full" alt="avatar" src={src} onError={() => setIsError(true)} />}
         </div>
     );

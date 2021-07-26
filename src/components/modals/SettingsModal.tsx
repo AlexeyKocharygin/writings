@@ -6,9 +6,9 @@ import { langState } from '../../store/states/langState';
 import { intlState } from '../../store/states/intlState';
 import { AutorenewIcon } from '../../icons/AutorenewIcon';
 import { LogoutIcon } from '../../icons/LogoutIcon';
-import { ActionButton } from '../ActionButton';
-import { ActionsGroup } from '../ActionsGroup';
-import { ActionSelect } from '../ActionSelect';
+import { ModalButton } from '../ModalButton';
+import { ModalGroup } from '../ModalGroup';
+import { ModalSelect } from '../ModalSelect';
 import { combine } from '../../utils/combine';
 import { Avatar } from '../Avatar';
 import { userState } from '../../store/states/userState';
@@ -30,8 +30,8 @@ export const SettingsModal = ({ onClose }: IProps): ReactElement => {
                 <span className="truncate">{user?.displayName || ' '}</span>
                 <span className="dark:text-light-gray-2 text-dark-gray-2 text-sm truncate">{user?.email || ' '}</span>
             </div>
-            <ActionsGroup className="flex-shrink-0 mb-4">
-                <ActionSelect
+            <ModalGroup className="flex-shrink-0 mb-4">
+                <ModalSelect
                     label={formatMessage('language')}
                     value={lang}
                     options={[
@@ -50,7 +50,7 @@ export const SettingsModal = ({ onClose }: IProps): ReactElement => {
                     ]}
                     onChange={(value) => langState(value)}
                 />
-                <ActionSelect
+                <ModalSelect
                     label={formatMessage('theme')}
                     value={themeValue}
                     options={[
@@ -69,17 +69,17 @@ export const SettingsModal = ({ onClose }: IProps): ReactElement => {
                     ]}
                     onChange={(value) => themeState(value)}
                 />
-            </ActionsGroup>
-            <ActionsGroup className="flex-shrink-0">
-                <ActionButton onClick={combine(onClose, () => document.location.reload(true))}>
+            </ModalGroup>
+            <ModalGroup className="flex-shrink-0">
+                <ModalButton onClick={combine(onClose, () => document.location.reload(true))}>
                     <span className="flex-auto text-left">{formatMessage('reload')}</span>
                     <AutorenewIcon />
-                </ActionButton>
-                <ActionButton onClick={combine(onClose, () => signOut())}>
+                </ModalButton>
+                <ModalButton onClick={combine(onClose, () => signOut())}>
                     <span className="flex-auto text-left">{formatMessage('signOut')}</span>
                     <LogoutIcon />
-                </ActionButton>
-            </ActionsGroup>
+                </ModalButton>
+            </ModalGroup>
         </>
     );
 };

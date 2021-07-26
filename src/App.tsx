@@ -8,29 +8,29 @@ import { useTouchEvents } from './hooks/useTouchEvents';
 import { Route } from './components/Route';
 import { PrivateRoute } from './components/PrivateRoute';
 import { Page } from './components/Page';
-import { useVisualViewportHeight } from './hooks/useVisualViewportHeight';
+import { useSavedScroll } from './hooks/useSavedScroll';
 
 export const App = (): ReactElement => {
     useTouchEvents();
-    useVisualViewportHeight();
+    useSavedScroll();
 
     return (
         <ErrorBoundary
             fallback={
-                <Page opened root>
+                <Page opened>
                     <OopsPage />
                 </Page>
             }
         >
             <PrivateRoute
                 fallback={
-                    <Page opened root>
+                    <Page opened>
                         <HelloPage />
                     </Page>
                 }
             >
                 <Route path="/">
-                    <Page root>
+                    <Page>
                         <WritingsPage />
                     </Page>
                 </Route>

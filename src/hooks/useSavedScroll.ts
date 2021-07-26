@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
+import { useSelector } from 'react-tagged-state';
 import { LocalStorage } from '../classes/LocalStorage';
+import { pathnameState } from '../store/states/pathnameState';
 
 const savedScroll = LocalStorage.get('savedScroll') || {};
 
@@ -11,42 +13,27 @@ window.addEventListener(
     { passive: true }
 );
 
-export const useSavedScroll = (name: string): void => {
+export const useSavedScroll = (): void => {
+    const pathname = useSelector(pathnameState);
+
     useEffect(() => {
         const handleScroll = () => {
-            const value = document.documentElement.scrollTop;
+            const value = window.pageYOffset;
 
             if (value) {
-                savedScroll[name] = value;
+                savedScroll[pathname] = value;
 
                 return;
             }
 
-            delete savedScroll[name];
+            delete savedScroll[pathname];
         };
 
+        window.scrollTo(0, savedScroll[pathname] || 0);
         window.addEventListener('scroll', handleScroll, { passive: true });
-
-        const scrollTop = savedScroll[name];
-        let frameId: number;
-
-        if (scrollTop) {
-            const frame = () => {
-                if (document.documentElement.scrollHeight - document.documentElement.clientHeight >= scrollTop) {
-                    document.documentElement.scrollTop = scrollTop;
-
-                    return;
-                }
-
-                frameId = window.requestAnimationFrame(frame);
-            };
-
-            frame();
-        }
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
-            window.cancelAnimationFrame(frameId);
         };
-    }, [name]);
+    }, [pathname]);
 };

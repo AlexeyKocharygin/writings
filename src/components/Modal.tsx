@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
 import cx from 'clsx';
 import { useTransition } from '../hooks/useTransition';
-import { useOutsideClick } from '../hooks/useOutsideClick';
 import { useSlideDown } from '../hooks/useSlideDown';
+import { preventDefault } from '../utils/preventDefault';
 import { Portal } from './Portal';
 import { Handler } from './Handler';
 
@@ -14,21 +14,15 @@ interface IProps {
 
 export const Modal = ({ opened, children, onClose }: IProps): ReactElement => {
     const transition = useTransition(!!opened, 300);
-    const ref = useOutsideClick<HTMLDivElement>(onClose);
     const { onTouchStart, dragging, diff } = useSlideDown(onClose);
 
     return (
         <Portal opened={transition !== 'closed'}>
-            <div
-                className={cx(
-                    'absolute duration-300 flex flex-col h-screen justify-end left-0 top-0 transition-all w-full z-10',
-                    ['opening', 'opened'].includes(transition) && 'backdrop-contrast-75'
-                )}
-            >
+            <div className={cx('fixed flex flex-col h-screen justify-end left-0 top-0 w-full z-10')} onClick={onClose}>
                 <div
-                    ref={ref}
+                    onClick={preventDefault}
                     className={cx(
-                        'bg-white dark:bg-black duration-300 flex flex-col max-h-[calc(100%-2rem)] overflow-auto pb-8 px-4 rounded-t-3xl transform-gpu transition-transform',
+                        'backdrop-blur-lg backdrop-contrast-75 bg-opacity-50 bg-white dark:bg-black dark:bg-opacity-50 duration-300 flex flex-col max-h-[calc(100%-2rem)] pb-8 px-4 rounded-t-3xl touch-action-none transition-transform',
                         !['opening', 'opened'].includes(transition) && 'translate-y-full',
                         dragging && 'transition-none'
                     )}

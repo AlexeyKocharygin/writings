@@ -5,7 +5,6 @@ import { CancelIcon } from '../icons/CancelIcon';
 import { SearchIcon } from '../icons/SearchIcon';
 import { intlState } from '../store/states/intlState';
 import { ISearch } from '../classes/LocalStorage';
-import { preventBodyScroll } from '../utils/preventBodyScroll';
 import { IconButton } from './IconButton';
 
 interface IProps {
@@ -21,17 +20,17 @@ export const SearchInput = ({ className, value = null, onChange }: IProps): Reac
         <div className={cx(className, 'flex items-center')}>
             <label
                 className={cx(
-                    'bg-black cursor-text dark:bg-dark-gray-6 flex flex-auto items-center p-2 rounded-xl shadow-xl text-white'
+                    'backdrop-blur-lg backdrop-contrast-75 bg-opacity-50 bg-white dark:bg-black dark:bg-opacity-50 flex flex-auto items-center p-2 rounded-xl'
                 )}
             >
                 <SearchIcon
                     className={cx(
                         'duration-300 flex-shrink-0 mr-2 transition-color',
-                        value === null && 'text-light-gray-2'
+                        value === null && 'dark:text-light-gray-2 text-dark-gray-2'
                     )}
                 />
                 <input
-                    className="placeholder-light-gray-2 w-full"
+                    className="dark:placeholder-light-gray-2 placeholder-dark-gray-2 w-full"
                     inputMode="search"
                     value={value || ''}
                     placeholder={formatMessage('search')}
@@ -45,8 +44,6 @@ export const SearchInput = ({ className, value = null, onChange }: IProps): Reac
                         if (value === null) {
                             onChange('');
                         }
-
-                        preventBodyScroll();
                     }}
                     onBlur={() => {
                         if (!value) {
@@ -54,17 +51,17 @@ export const SearchInput = ({ className, value = null, onChange }: IProps): Reac
                         }
                     }}
                 />
-                {!!value && (
-                    <IconButton aria-label="clear" className="flex-shrink-0 ml-2" onClick={() => onChange('')}>
-                        <CancelIcon />
-                    </IconButton>
-                )}
-            </label>
-            {value !== null && (
-                <IconButton className="flex-shrink-0 ml-2" onClick={() => onChange(null)}>
-                    {formatMessage('cancel')}
+                <IconButton
+                    aria-label="clear"
+                    className={cx('flex-shrink-0 ml-2', !value && 'opacity-0 pointer-events-none')}
+                    onClick={() => onChange('')}
+                >
+                    <CancelIcon />
                 </IconButton>
-            )}
+            </label>
+            <IconButton className={cx('flex-shrink-0 ml-2', value === null && 'hidden')} onClick={() => onChange(null)}>
+                {formatMessage('cancel')}
+            </IconButton>
         </div>
     );
 };

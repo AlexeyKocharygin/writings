@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-type ITransition = 'open' | 'opening' | 'opened' | 'close' | 'closing' | 'closed';
+export type ITransition = 'open' | 'opening' | 'opened' | 'close' | 'closing' | 'closed';
 
 export const useTransition = (opened: boolean, duration: number): ITransition => {
     const [state, setState] = useState<ITransition>(opened ? 'opened' : 'closed');

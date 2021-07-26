@@ -2,7 +2,6 @@ import React, { FocusEventHandler, HTMLAttributes, ReactElement } from 'react';
 import cx from 'clsx';
 import { RichUtils } from '../classes/RichUtils';
 import { preventDefault } from '../utils/preventDefault';
-import { preventBodyScroll } from '../utils/preventBodyScroll';
 
 interface IProps {
     className?: string;
@@ -26,7 +25,6 @@ export const Editor = ({ className, inputMode, value, onChange, onFocus, onBlur 
                 onFocus(event);
             }
 
-            preventBodyScroll(event);
             RichUtils.styleWithCss();
         }}
         onBlur={(event) => {
