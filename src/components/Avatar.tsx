@@ -1,13 +1,13 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import cx from 'clsx';
-import SettingsIcon from '../icons/SettingsIcon';
 
 interface IProps {
     className?: string;
     src?: string;
+    fallback?: any;
 }
 
-export const Avatar = ({ className, src }: IProps): ReactElement => {
+export const Avatar = ({ className, src, fallback }: IProps): ReactElement => {
     const [isError, setIsError] = useState(false);
 
     useEffect(() => {
@@ -19,7 +19,7 @@ export const Avatar = ({ className, src }: IProps): ReactElement => {
     return (
         <div className={cx(className, 'overflow-hidden rounded-full')}>
             {showAvatar && <img className="h-full" alt="avatar" src={src} onError={() => setIsError(true)} />}
-            {!showAvatar && <SettingsIcon className="h-full w-full" />}
+            {!showAvatar && !!fallback && fallback}
         </div>
     );
 };

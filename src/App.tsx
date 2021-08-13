@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
 import { ErrorBoundary } from './components/ErrorBoundary';
-import { OopsPage } from './components/pages/OopsPage';
-import { WritingPage } from './components/pages/WritingPage';
-import { WritingsPage } from './components/pages/WritingsPage';
+import { OopsPage } from './components/OopsPage';
+import { WritingPage } from './components/WritingPage';
+import { WritingsPage } from './components/WritingsPage';
 import { useTouchEvents } from './hooks/useTouchEvents';
 import { Route } from './components/Route';
 import { Page } from './components/Page';

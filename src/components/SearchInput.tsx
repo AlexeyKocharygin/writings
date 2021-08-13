@@ -25,7 +25,7 @@ export const SearchInput = ({ className, value = null, onChange }: IProps): Reac
             >
                 <SearchIcon
                     className={cx(
-                        'duration-300 flex-shrink-0 mr-2 transition-color',
+                        'duration-300 flex-shrink-0 mr-2',
                         value === null && 'dark:text-light-gray-2 text-dark-gray-2'
                     )}
                 />

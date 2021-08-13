@@ -1,25 +1,24 @@
 import React, { ReactElement, useState } from 'react';
 import { useSelector } from 'react-tagged-state';
 import cx from 'clsx';
-import { putWriting } from '../../actions/putWriting';
-import { MoreHorizIcon } from '../../icons/MoreHorizIcon';
-import { writingsState } from '../../store/states/writingsState';
-import { useFetch } from '../../hooks/useFetch';
-import { usePermanentMatch } from '../../hooks/usePermanentMatch';
-import { IconButton } from '../IconButton';
-import { Editor } from '../Editor';
-import { Router } from '../../classes/Router';
-import { ArrowBackIosIcon } from '../../icons/ArrowBackIosIcon';
-import { useToggle } from '../../hooks/useToggle';
-import { Modal } from '../Modal';
-import { WritingModal } from '../modals/WritingModal';
-import { preventDefault } from '../../utils/preventDefault';
-import { AddIcon } from '../../icons/AddIcon';
-import { Menu } from '../Menu';
-import { RichStylesMenu } from '../RichStylesMenu';
-import { Corner } from '../Corner';
-import { intlState } from '../../store/states/intlState';
-import { fetchWritings } from '../../actions/fetchWritings';
+import { putWriting } from '../actions/putWriting';
+import { MoreHorizIcon } from '../icons/MoreHorizIcon';
+import { writingsState } from '../store/states/writingsState';
+import { usePermanentMatch } from '../hooks/usePermanentMatch';
+import { Router } from '../classes/Router';
+import { ArrowBackIosIcon } from '../icons/ArrowBackIosIcon';
+import { useToggle } from '../hooks/useToggle';
+import { preventDefault } from '../utils/preventDefault';
+import { AddIcon } from '../icons/AddIcon';
+import { intlState } from '../store/states/intlState';
+import { useWritings } from '../hooks/useWritings';
+import { IconButton } from './IconButton';
+import { Editor } from './Editor';
+import { Modal } from './Modal';
+import { WritingModal } from './WritingModal';
+import { Menu } from './Menu';
+import { RichStylesMenu } from './RichStylesMenu';
+import { Corner } from './Corner';
 
 export const WritingPage = (): ReactElement => {
     const { writingId } = usePermanentMatch<{ writingId: string }>('/writings/:writingId');
@@ -28,8 +27,9 @@ export const WritingPage = (): ReactElement => {
     const writingModal = useToggle();
     const [focused, setFocused] = useState(false);
     const { formatMessage } = useSelector(intlState);
+    const [isSaving, setIsSaving] = useState(false);
 
-    useFetch(fetchWritings);
+    useWritings();
 
     return (
         <>
@@ -37,7 +37,7 @@ export const WritingPage = (): ReactElement => {
                 <IconButton
                     aria-label="back"
                     onClick={() => {
-                        if (writing?.title) {
+                        if (!writing || writing.title) {
                             Router.back();
 
                             return;
@@ -50,7 +50,14 @@ export const WritingPage = (): ReactElement => {
                         }
 
                         if (result) {
-                            putWriting(writingId, { title: result });
+                            setIsSaving(true);
+                            putWriting(writingId, { title: result })
+                                .then(() => {
+                                    setIsSaving(false);
+                                })
+                                .catch(() => {
+                                    setIsSaving(false);
+                                });
                         }
 
                         Router.back();
@@ -58,6 +65,7 @@ export const WritingPage = (): ReactElement => {
                 >
                     <ArrowBackIosIcon />
                 </IconButton>
+                {isSaving && <span>{formatMessage('saving')}</span>}
                 <IconButton aria-label="more" onClick={writingModal.toggle}>
                     <MoreHorizIcon />
                 </IconButton>
@@ -68,7 +76,16 @@ export const WritingPage = (): ReactElement => {
                 value={writing?.content}
                 onFocus={() => setFocused(true)}
                 onBlur={() => setFocused(false)}
-                onChange={(html) => putWriting(writingId, { content: html })}
+                onChange={(html) => {
+                    setIsSaving(true);
+                    putWriting(writingId, { content: html })
+                        .then(() => {
+                            setIsSaving(false);
+                        })
+                        .catch(() => {
+                            setIsSaving(false);
+                        });
+                }}
             />
             <Corner
                 className={cx(

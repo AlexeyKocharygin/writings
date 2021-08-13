@@ -7,9 +7,5 @@ interface IProps {
 }
 
 export const Page = ({ opened, children }: IProps): ReactElement => (
-    <>
-        {opened && (
-            <div className={cx('bg-white dark:bg-black flex flex-col min-h-screen px-4 w-full')}>{children}</div>
-        )}
-    </>
+    <>{opened && <div className={cx('flex flex-col min-h-screen px-4 w-full')}>{children}</div>}</>
 );

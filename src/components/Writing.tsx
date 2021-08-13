@@ -6,7 +6,7 @@ import { IWriting } from '../classes/Database';
 import { useLongTouch } from '../hooks/useLongTouch';
 import { useToggle } from '../hooks/useToggle';
 import { Link } from './Link';
-import { WritingModal } from './modals/WritingModal';
+import { WritingModal } from './WritingModal';
 import { Modal } from './Modal';
 
 interface IProps {

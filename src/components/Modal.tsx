@@ -4,7 +4,6 @@ import { useTransition } from '../hooks/useTransition';
 import { useSlideDown } from '../hooks/useSlideDown';
 import { preventDefault } from '../utils/preventDefault';
 import { Portal } from './Portal';
-import { Handler } from './Handler';
 
 interface IProps {
     opened?: boolean;
@@ -28,7 +27,11 @@ export const Modal = ({ opened, children, onClose }: IProps): ReactElement => {
                     )}
                     style={diff > 0 ? { transform: `translate3d(0, ${diff}px, 0)` } : undefined}
                 >
-                    <Handler className="mb-8 sticky top-0 z-10" onClose={onClose} onTouchStart={onTouchStart} />
+                    <div
+                        className="active:scale-75 before:bg-dark-gray-2 before:h-0.5 before:rounded-full before:w-1/2 dark:before:bg-light-gray-2 duration-300 flex justify-center mb-8 py-4 sticky top-0 transition-transform z-10"
+                        onClick={onClose}
+                        onTouchStart={onTouchStart}
+                    />
                     {children}
                 </div>
             </div>

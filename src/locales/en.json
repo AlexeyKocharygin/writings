@@ -16,7 +16,7 @@
     "done": "Done",
     "cancel": "Cancel",
     "reload": "Reload",
-    "signInPlease": "Sign in, please. This needs for syncing across devices",
+    "signInPlease": "You can sign in for syncing across devices or continue using app on this device",
     "somethingBadHappened": "Something bad happened. Try to reload page, please",
     "language": "Language",
     "en": "English",
@@ -29,5 +29,8 @@
     "notFound": "You have not writings with this title",
     "noWritings": "You have not writings yet",
     "add": "Add",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "loading": "Loading...",
+    "saving": "Saving...",
+    "continue": "Continue"
 }

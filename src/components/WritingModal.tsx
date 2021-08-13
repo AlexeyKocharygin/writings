@@ -1,18 +1,18 @@
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-tagged-state';
-import { intlState } from '../../store/states/intlState';
-import { ModalButton } from '../ModalButton';
-import { ModalGroup } from '../ModalGroup';
-import { combine } from '../../utils/combine';
-import { IWriting } from '../../classes/Database';
-import { putWriting } from '../../actions/putWriting';
-import { shareWriting } from '../../actions/shareWriting';
-import { IosShareIcon } from '../../icons/IosShareIcon';
-import { Router } from '../../classes/Router';
-import { deleteWriting } from '../../actions/deleteWriting';
-import { DeleteOutlineIcon } from '../../icons/DeleteOutlineIcon';
-import { ToggledDate } from '../ToggledDate';
-import { EditIcon } from '../../icons/EditIcon';
+import { intlState } from '../store/states/intlState';
+import { combine } from '../utils/combine';
+import { IWriting } from '../classes/Database';
+import { putWriting } from '../actions/putWriting';
+import { shareWriting } from '../actions/shareWriting';
+import { IosShareIcon } from '../icons/IosShareIcon';
+import { Router } from '../classes/Router';
+import { deleteWriting } from '../actions/deleteWriting';
+import { DeleteOutlineIcon } from '../icons/DeleteOutlineIcon';
+import { EditIcon } from '../icons/EditIcon';
+import { ToggledDate } from './ToggledDate';
+import { ModalGroup } from './ModalGroup';
+import { ModalButton } from './ModalButton';
 
 interface IProps {
     writingId: string;

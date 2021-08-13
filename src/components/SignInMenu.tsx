@@ -7,6 +7,6 @@ interface IProps {
     onClose: () => void;
 }
 
-export const SignUpMenu = ({ onClose }: IProps): ReactElement => (
+export const SignInMenu = ({ onClose }: IProps): ReactElement => (
     <SignInWithGoogleButton onClick={combine(onClose, () => signInWithGoogle())} />
 );

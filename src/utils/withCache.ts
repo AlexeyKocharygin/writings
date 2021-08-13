@@ -1,12 +1,16 @@
+import { getId } from './getId';
+
 let pending: Record<string, Promise<void>> = {};
 let fulfilled: Record<string, boolean> = {};
 
 export const withCache = <Type extends (...args: any[]) => Promise<void>>(
-    getName: (...args: Parameters<Type>) => string,
-    action: Type
-) => {
-    return async (...args: Parameters<Type>): Promise<void> => {
-        const name = getName(...args);
+    action: Type,
+    getName?: (...args: Parameters<Type>) => string
+): ((...args: Parameters<Type>) => Promise<void>) => {
+    const id = getId();
+
+    return async (...args) => {
+        const name = getName ? getName(...args) : id;
 
         if (pending[name]) {
             return pending[name];

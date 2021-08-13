@@ -1,9 +1,10 @@
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-tagged-state';
-import { intlState } from '../../store/states/intlState';
-import { AutorenewIcon } from '../../icons/AutorenewIcon';
-import { PrimaryButton } from '../PrimaryButton';
-import { ErrorIcon } from '../../icons/ErrorIcon';
+import { intlState } from '../store/states/intlState';
+import { AutorenewIcon } from '../icons/AutorenewIcon';
+import { ErrorIcon } from '../icons/ErrorIcon';
+import { reload } from '../actions/reload';
+import { PrimaryButton } from './PrimaryButton';
 
 export const OopsPage = (): ReactElement => {
     const { formatMessage } = useSelector(intlState);
@@ -15,7 +16,7 @@ export const OopsPage = (): ReactElement => {
                 <span className="dark:text-light-gray-2 mb-8 text-center text-dark-gray-2 text-sm">
                     {formatMessage('somethingBadHappened')}
                 </span>
-                <PrimaryButton onClick={() => document.location.reload(true)}>
+                <PrimaryButton onClick={reload}>
                     <AutorenewIcon className="mr-2" />
                     {formatMessage('reload')}
                 </PrimaryButton>
