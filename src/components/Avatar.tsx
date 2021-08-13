@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import cx from 'clsx';
+import SettingsIcon from '../icons/SettingsIcon';
 
 interface IProps {
     className?: string;
@@ -13,9 +14,12 @@ export const Avatar = ({ className, src }: IProps): ReactElement => {
         setIsError(false);
     }, [src]);
 
+    const showAvatar = !isError && !!src;
+
     return (
-        <div className={cx(className, 'bg-white dark:black overflow-hidden rounded-full')}>
-            {!isError && <img className="h-full" alt="avatar" src={src} onError={() => setIsError(true)} />}
+        <div className={cx(className, 'overflow-hidden rounded-full')}>
+            {showAvatar && <img className="h-full" alt="avatar" src={src} onError={() => setIsError(true)} />}
+            {!showAvatar && <SettingsIcon className="h-full w-full" />}
         </div>
     );
 };

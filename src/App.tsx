@@ -1,12 +1,10 @@
 import React, { ReactElement } from 'react';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { OopsPage } from './components/pages/OopsPage';
-import { HelloPage } from './components/pages/HelloPage';
 import { WritingPage } from './components/pages/WritingPage';
 import { WritingsPage } from './components/pages/WritingsPage';
 import { useTouchEvents } from './hooks/useTouchEvents';
 import { Route } from './components/Route';
-import { PrivateRoute } from './components/PrivateRoute';
 import { Page } from './components/Page';
 import { useSavedScroll } from './hooks/useSavedScroll';
 import { useTheme } from './hooks/useTheme';
@@ -26,24 +24,16 @@ export const App = (): ReactElement => {
                 </Page>
             }
         >
-            <PrivateRoute
-                fallback={
-                    <Page opened>
-                        <HelloPage />
-                    </Page>
-                }
-            >
-                <Route path="/">
-                    <Page>
-                        <WritingsPage />
-                    </Page>
-                </Route>
-                <Route path="/writings/:writingId">
-                    <Page>
-                        <WritingPage />
-                    </Page>
-                </Route>
-            </PrivateRoute>
+            <Route path="/">
+                <Page>
+                    <WritingsPage />
+                </Page>
+            </Route>
+            <Route path="/writings/:writingId">
+                <Page>
+                    <WritingPage />
+                </Page>
+            </Route>
         </ErrorBoundary>
     );
 };

@@ -28,5 +28,6 @@
     "writing": "Writing",
     "notFound": "You have not writings with this title",
     "noWritings": "You have not writings yet",
-    "add": "Add"
+    "add": "Add",
+    "signIn": "Sign in"
 }

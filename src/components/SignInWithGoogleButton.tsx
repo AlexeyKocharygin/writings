@@ -2,6 +2,7 @@ import React, { MouseEventHandler, ReactElement } from 'react';
 import { useSelector } from 'react-tagged-state';
 import cx from 'clsx';
 import { intlState } from '../store/states/intlState';
+import GoogleIcon from '../icons/Google';
 
 interface IProps {
     className?: string;
@@ -15,20 +16,13 @@ export const SignInWithGoogleButton = ({ className, onClick }: IProps): ReactEle
         <button
             className={cx(
                 className,
-                'active:bg-light-gray-6 bg-white duration-300 flex items-center justify-center min-w-[75%] p-4 rounded-xl shadow-xl text-black transition-color'
+                'active:scale-75 bg-white duration-300 flex items-center justify-center min-w-[75%] p-4 rounded-xl shadow-xl text-black transition-transform'
             )}
+            type="button"
             onClick={onClick}
         >
-            <img
-                className="h-6 mr-4 w-6"
-                alt="sign in with google"
-                src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-            />
+            <GoogleIcon className="h-6 mr-4 w-6" />
             {formatMessage('signInWithGoogle')}
         </button>
     );
-};
-
-SignInWithGoogleButton.defaultProps = {
-    type: 'button'
 };

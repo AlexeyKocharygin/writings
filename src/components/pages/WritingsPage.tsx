@@ -9,7 +9,6 @@ import { useFetch } from '../../hooks/useFetch';
 import { fetchWritings } from '../../actions/fetchWritings';
 import { SearchInput } from '../SearchInput';
 import { Avatar } from '../Avatar';
-import { WritingsList } from '../WritingsList';
 import { NotFound } from '../NotFound';
 import { NoWritings } from '../NoWritings';
 import { useToggle } from '../../hooks/useToggle';
@@ -17,6 +16,7 @@ import { Modal } from '../Modal';
 import { IconButton } from '../IconButton';
 import { SettingsModal } from '../modals/SettingsModal';
 import { Router } from '../../classes/Router';
+import { Writing } from '../Writing';
 
 export const WritingsPage = (): ReactElement => {
     const user = useSelector(userState);
@@ -39,7 +39,11 @@ export const WritingsPage = (): ReactElement => {
                 <SearchInput value={search} onChange={(value) => searchState(value)} />
             </div>
             {!!filteredWritings.length && (
-                <WritingsList className="flex-auto flex-shrink-0" writings={filteredWritings} />
+                <div className={'flex-auto flex-shrink- auto-rows-max gap-4 grid grid-cols-2'}>
+                    {filteredWritings.map((writing) => (
+                        <Writing key={writing.id} writing={writing} />
+                    ))}
+                </div>
             )}
             {!filteredWritings.length && (
                 <>

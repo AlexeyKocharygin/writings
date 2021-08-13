@@ -28,7 +28,7 @@ export const Menu = ({ opened, children, onClose, onMouseDown }: IProps): ReactE
                 <div
                     onClick={preventDefault}
                     className={cx(
-                        'backdrop-blur-lg backdrop-contrast-75 bg-opacity-50 bg-white border-0 border-light-gray-6 border-solid border-t dark:bg-black dark:bg-opacity-50 dark:border-dark-gray-6 duration-300 flex flex-col max-h-full pb-8 pt-4 px-4 touch-action-none transform-gpu transition-transform',
+                        'backdrop-blur-lg backdrop-contrast-75 bg-opacity-50 bg-white border-0 border-light-gray-6 border-solid border-t dark:bg-black dark:bg-opacity-50 dark:border-dark-gray-6 duration-300 flex flex-col max-h-full pb-8 pt-4 px-4 touch-action-none transition-transform',
                         !['opening', 'opened'].includes(transition) && 'translate-y-full'
                     )}
                 >

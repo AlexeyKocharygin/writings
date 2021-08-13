@@ -11,14 +11,11 @@ export const PrimaryButton = ({ className, children, onClick }: IProps): ReactEl
     <button
         className={cx(
             className,
-            'active:bg-light-gray-5 bg-light-gray-6 dark:active:bg-dark-gray-5 dark:bg-dark-gray-6 duration-300 flex items-center justify-center min-w-[75%] p-4 rounded-xl shadow-xl transition-color'
+            'active:scale-75 backdrop-blur-lg backdrop-contrast-75 bg-opacity-50 bg-white dark:bg-black dark:bg-opacity-50 duration-300 flex items-center justify-center min-w-[75%] p-4 rounded-xl transition-transform'
         )}
+        type="button"
         onClick={onClick}
     >
         {children}
     </button>
 );
-
-PrimaryButton.defaultProps = {
-    type: 'button'
-};

@@ -13,6 +13,7 @@ export const ModalButton = ({ className, children, onClick }: IProps): ReactElem
             className,
             'active:bg-light-gray-6 bg-white dark:active:bg-dark-gray-6 dark:bg-black duration-300 flex items-center p-4 text-left transition-color'
         )}
+        type="button"
         onClick={onClick}
     >
         {children}

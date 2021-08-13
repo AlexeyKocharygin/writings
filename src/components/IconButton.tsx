@@ -21,14 +21,11 @@ export const IconButton = ({
         onClick={onClick}
         className={cx(
             className,
-            'active:opacity-50 before:-translate-x-1/2 before:-translate-y-1/2 before:absolute before:h-full before:left-1/2 before:min-h-[3rem] before:min-w-[3rem] before:top-1/2 before:w-full duration-300 flex items-center justify-center relative transition-opacity'
+            'active:scale-75 before:-translate-x-1/2 before:-translate-y-1/2 before:absolute before:h-full before:left-1/2 before:min-h-[3rem] before:min-w-[3rem] before:top-1/2 before:w-full duration-300 flex items-center justify-center relative transition-transform'
         )}
+        type="button"
         onMouseDown={onMouseDown}
     >
         {children}
     </button>
 );
-
-IconButton.defaultProps = {
-    type: 'button'
-};

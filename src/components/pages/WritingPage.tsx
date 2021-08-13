@@ -4,7 +4,6 @@ import cx from 'clsx';
 import { putWriting } from '../../actions/putWriting';
 import { MoreHorizIcon } from '../../icons/MoreHorizIcon';
 import { writingsState } from '../../store/states/writingsState';
-import { fetchWriting } from '../../actions/fetchWriting';
 import { useFetch } from '../../hooks/useFetch';
 import { usePermanentMatch } from '../../hooks/usePermanentMatch';
 import { IconButton } from '../IconButton';
@@ -20,6 +19,7 @@ import { Menu } from '../Menu';
 import { RichStylesMenu } from '../RichStylesMenu';
 import { Corner } from '../Corner';
 import { intlState } from '../../store/states/intlState';
+import { fetchWritings } from '../../actions/fetchWritings';
 
 export const WritingPage = (): ReactElement => {
     const { writingId } = usePermanentMatch<{ writingId: string }>('/writings/:writingId');
@@ -29,7 +29,7 @@ export const WritingPage = (): ReactElement => {
     const [focused, setFocused] = useState(false);
     const { formatMessage } = useSelector(intlState);
 
-    useFetch(fetchWriting, writingId);
+    useFetch(fetchWritings);
 
     return (
         <>

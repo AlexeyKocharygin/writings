@@ -14,17 +14,26 @@ interface ILocalStorageScheme {
     'state/search': ISearch;
     writingsUpdatedOn: number;
     savedScroll: Record<string, number>;
+    syncDeleteWritings: string[];
+    syncPutWritings: string[];
 }
 
 class LocalStorageClass {
-    set<Type extends keyof ILocalStorageScheme>(key: Type, data: ILocalStorageScheme[Type]): void {
-        window.localStorage.setItem(key, JSON.stringify(data));
+    set<Type extends keyof ILocalStorageScheme>(
+        key: Type,
+        data: ILocalStorageScheme[Type] | ((data: ILocalStorageScheme[Type]) => ILocalStorageScheme[Type])
+    ): void {
+        window.localStorage.setItem(key, JSON.stringify(typeof data === 'function' ? data(this.get(key)) : data));
     }
 
     get<Type extends keyof ILocalStorageScheme>(key: Type): ILocalStorageScheme[Type] {
         const item = window.localStorage.getItem(key);
 
         return item ? JSON.parse(item) : item;
+    }
+
+    remove<Type extends keyof ILocalStorageScheme>(key: Type) {
+        window.localStorage.removeItem(key);
     }
 
     clear(): void {
