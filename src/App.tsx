@@ -9,10 +9,14 @@ import { Route } from './components/Route';
 import { PrivateRoute } from './components/PrivateRoute';
 import { Page } from './components/Page';
 import { useSavedScroll } from './hooks/useSavedScroll';
+import { useTheme } from './hooks/useTheme';
+import { useLang } from './hooks/useLang';
 
 export const App = (): ReactElement => {
     useTouchEvents();
     useSavedScroll();
+    useTheme();
+    useLang();
 
     return (
         <ErrorBoundary
